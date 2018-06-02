@@ -11,6 +11,7 @@ namespace LibrarySystemPro.BusinessObjects
         public int UserId { get; set; }
         public Nullable<DateTime> DateRented { get; set; }
         public Nullable<DateTime> DateToReturn { get; set; }
+        public bool IsDeleted { get; set; }
 
         public virtual BookBusiness Book { get; set; }
         public virtual UserBusiness User { get; set; }

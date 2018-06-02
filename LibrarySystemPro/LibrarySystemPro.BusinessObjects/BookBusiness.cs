@@ -8,7 +8,7 @@ namespace LibrarySystemPro.BusinessObjects
 {
     public class BookBusiness
     {
-        public Book()
+        public BookBusiness()
         {
             this.RentedBooks = new HashSet<RentedBookBusiness>();
         }

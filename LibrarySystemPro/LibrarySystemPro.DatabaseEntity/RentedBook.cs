@@ -19,6 +19,7 @@ namespace LibrarySystemPro.DatabaseEntity
         public int UserId { get; set; }
         public Nullable<System.DateTime> DateRented { get; set; }
         public Nullable<System.DateTime> DateToReturn { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

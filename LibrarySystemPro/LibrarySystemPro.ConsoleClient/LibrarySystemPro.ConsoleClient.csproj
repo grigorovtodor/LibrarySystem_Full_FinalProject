@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6039460-F76F-4CF7-A230-72BDF3348055}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{36D0121D-3D5C-4869-89FC-DC6ECE0AF3DE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibrarySystemPro.BusinessObjects</RootNamespace>
-    <AssemblyName>LibrarySystemPro.BusinessObjects</AssemblyName>
+    <RootNamespace>LibrarySystemPro.ConsoleClient</RootNamespace>
+    <AssemblyName>LibrarySystemPro.ConsoleClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +36,16 @@
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -45,14 +56,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorBusiness.cs" />
-    <Compile Include="BookBusiness.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentedBookBusiness.cs" />
-    <Compile Include="UserBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystemPro.BusinessObjects\LibrarySystemPro.BusinessObjects.csproj">
+      <Project>{F6039460-F76F-4CF7-A230-72BDF3348055}</Project>
+      <Name>LibrarySystemPro.BusinessObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystemPro.DataAccessLayer\LibrarySystemPro.DataAccessLayer.csproj">
+      <Project>{C6FC9B54-05E3-4CD8-9222-F40C9B95DB4D}</Project>
+      <Name>LibrarySystemPro.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystemPro.DatabaseEntity\LibrarySystemPro.DatabaseEntity.csproj">
+      <Project>{72E554BD-70B3-47B6-B117-4E1D33F64B07}</Project>
+      <Name>LibrarySystemPro.DatabaseEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
