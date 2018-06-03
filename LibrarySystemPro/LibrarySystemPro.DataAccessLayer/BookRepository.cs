@@ -76,7 +76,7 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public void Update(BookBusiness item)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
+            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
 
             using (var database = new LibrarySystemProEntities())
             {
@@ -96,9 +96,31 @@ namespace LibrarySystemPro.DataAccessLayer
                 }
 
                 dbBook.AuthorId = item.AuthorId;
-                dbBook.Author = Mapper.Map<Author>(authorRepo.Read(item.AuthorId));
+                //dbBook.Author = Mapper.Map<Author>(authorRepo.Read(item.AuthorId));
 
                 database.SaveChanges();
+            }
+        }
+
+        public bool IsBookRented(int id)
+        {
+            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
+
+            using (var database = new LibrarySystemProEntities())
+            {
+                //var dbBook = database.Books.FirstOrDefault(b => b.Id == id);
+                var allRentedBooks = new RentedBookRepository().ReadAll();
+                var result = false;
+
+                foreach (var book in allRentedBooks)
+                {
+                    if (book.BookId == id)
+                    {
+                        result = true;
+                    }
+                }
+
+                return result;
             }
         }
     }
