@@ -1,0 +1,74 @@
+﻿@model LibrarySystemPro.WebClient.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Author Name: ") @*DisplayNameFor(model => model.Author.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("Book Name: ") @*DisplayNameFor(model => model.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("ISBN: ") @*DisplayNameFor(model => model.ISBN)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.Label("Pages: ") @*DisplayNameFor(model => model.PageCount)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageCount)
+        </dd>
+
+        <dt>
+            @Html.Label("Publishing date: ") @*DisplayNameFor(model => model.PublishingDate)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishingDate)
+        </dd>
+
+        <dt>
+            @Html.Label("Date rented: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRented)
+        </dd>
+
+        <dt>
+            @Html.Label("Date to return: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateToReturn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

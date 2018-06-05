@@ -12,8 +12,6 @@ namespace LibrarySystemPro.DataAccessLayer
     {
         public void Create(BookBusiness item)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbObject = Mapper.Map<Book>(item);
@@ -39,14 +37,11 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public void Delete(BookBusiness item)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
             Delete(item.Id);
         }
 
         public BookBusiness Read(int id)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbBook = database.Books.FirstOrDefault(b => b.Id == id);
@@ -58,8 +53,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public ICollection<BookBusiness> ReadAll()
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbBook = database.Books.Where(b => b.IsDeleted == false).ToList();
@@ -67,7 +60,8 @@ namespace LibrarySystemPro.DataAccessLayer
 
                 foreach (var book in dbBook)
                 {
-                    result.Add(Mapper.Map<BookBusiness>(book));
+                    var cuurent = Mapper.Map<BookBusiness>(book);
+                    result.Add(cuurent);
                 }
 
                 return result;
@@ -76,8 +70,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public void Update(BookBusiness item)
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 AuthorRepository authorRepo = new AuthorRepository();
@@ -104,8 +96,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public bool IsBookRented(int id)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(BookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 //var dbBook = database.Books.FirstOrDefault(b => b.Id == id);

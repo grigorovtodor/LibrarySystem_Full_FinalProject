@@ -5,11 +5,11 @@ using System;
 
 namespace LibrarySystemPro.DataAccessLayer.Profiles
 {
-    public class BookBusinessToBookDataProfile : Profile
+    public class UserBusinessToUserDataProfile : Profile
     {
-        public BookBusinessToBookDataProfile()
+        public UserBusinessToUserDataProfile()
         {
-            this.CreateMap<BookBusiness, Book>();
+            this.CreateMap<UserBusiness, User>();
         }
     }
 }

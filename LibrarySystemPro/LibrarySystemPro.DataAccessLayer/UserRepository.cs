@@ -12,8 +12,6 @@ namespace LibrarySystemPro.DataAccessLayer
     {
         public void Create(UserBusiness item)
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(UserRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbObject = Mapper.Map<User>(item);
@@ -44,8 +42,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public UserBusiness Read(int id)
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(UserRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbUser = database.Users.FirstOrDefault(u => u.Id == id);
@@ -57,8 +53,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public ICollection<UserBusiness> ReadAll()
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(UserRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbUsers = database.Users.Where(u => u.IsDeleted == false).ToList();
@@ -75,7 +69,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public void Update(UserBusiness item)
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(UserRepository)));
 
             using (var database = new LibrarySystemProEntities())
             {

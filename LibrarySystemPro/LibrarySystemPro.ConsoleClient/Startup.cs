@@ -60,6 +60,12 @@ namespace LibrarySystemPro.ConsoleClient
 
             //bookRepo.Delete(8);
 
+            var allBooks = bookRepo.ReadAll();
+
+            foreach (var book in allBooks)
+            {
+                Console.WriteLine($"{book.Name}");
+            }
 
             //Console.WriteLine($"{book.Name}, {book.ISBN}, {book.PageCount}, {book.IsDeleted}");
             //Console.WriteLine($"{author.Name}, {author.Birthdate}, {author.Gender}, {author.IsDeleted}");

@@ -2,14 +2,12 @@
 using LibrarySystemPro.BusinessObjects;
 using LibrarySystemPro.DatabaseEntity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace LibrarySystemPro.DataAccessLayer.Profiles
 {
-    public class AuthorDataToAuthorBusiness : Profile
+    public class AuthorDataToAuthorBusinessProfile : Profile
     {
-        public AuthorDataToAuthorBusiness()
+        public AuthorDataToAuthorBusinessProfile()
         {
             this.CreateMap<Author, AuthorBusiness>();
         }

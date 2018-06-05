@@ -12,8 +12,6 @@ namespace LibrarySystemPro.DataAccessLayer
     {
         public void Create(AuthorBusiness item)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(AuthorRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbObject = Mapper.Map<Author>(item);
@@ -44,8 +42,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public AuthorBusiness Read(int id)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(AuthorRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbAuthor = database.Authors.FirstOrDefault(a => a.Id == id);
@@ -57,8 +53,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public ICollection<AuthorBusiness> ReadAll()
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(AuthorRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbAuthors = database.Authors.Where(a => a.IsDeleted == false).ToList();

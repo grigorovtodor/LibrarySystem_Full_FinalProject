@@ -12,8 +12,6 @@ namespace LibrarySystemPro.DataAccessLayer
     {
         public void Create(RentedBookBusiness item)
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(RentedBookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbObject = Mapper.Map<RentedBook>(item);
@@ -44,8 +42,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public RentedBookBusiness Read(int id)
         {
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(RentedBookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbRentedBook = database.RentedBooks.FirstOrDefault(r => r.Id == id);
@@ -57,8 +53,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public ICollection<RentedBookBusiness> ReadAll()
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(RentedBookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbRentedBooks = database.RentedBooks.Where(r => r.IsDeleted == false).ToList();
@@ -75,8 +69,6 @@ namespace LibrarySystemPro.DataAccessLayer
 
         public void Update(RentedBookBusiness item)
         {
-            //Mapper.Initialize(cfg => cfg.AddProfiles(typeof(RentedBookRepository)));
-
             using (var database = new LibrarySystemProEntities())
             {
                 var dbRentedBook = database.RentedBooks.FirstOrDefault(r => r.Id == item.Id);
@@ -97,6 +89,44 @@ namespace LibrarySystemPro.DataAccessLayer
                 //dbRentedBook.User = Mapper.Map<User>(item.User);
 
                 database.SaveChanges();
+            }
+        }
+
+        public DateTime? BookDateRented(int id)
+        {
+            using (var database = new LibrarySystemProEntities())
+            {
+                var allRentedBooks = new RentedBookRepository().ReadAll();
+                DateTime? result = null;
+
+                foreach (var item in allRentedBooks)
+                {
+                    if (item.BookId == id)
+                    {
+                        result = item.DateRented;
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public DateTime? BookDateToReturn(int id)
+        {
+            using (var database = new LibrarySystemProEntities())
+            {
+                var allRentedBooks = new RentedBookRepository().ReadAll();
+                DateTime? result = null;
+
+                foreach (var item in allRentedBooks)
+                {
+                    if (item.BookId == id)
+                    {
+                        result = item.DateToReturn;
+                    }
+                }
+
+                return result;
             }
         }
     }
