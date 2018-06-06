@@ -1,4 +1,4 @@
-﻿@model LibrarySystemPro.WebClient.Models.Author
+﻿@model LibrarySystemPro.WebClient.Models.User
 
 @{
     ViewBag.Title = "Delete";
@@ -8,15 +8,31 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Author</h4>
+    <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.Label("Author Name: ")
+            @Html.Label("Username: ")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("Unique ID Number: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniqueIdNumber)
+        </dd>
+
+        <dt>
+            @Html.Label("Address: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
         </dd>
 
         <dt>
@@ -28,11 +44,19 @@
         </dd>
 
         <dt>
-            @Html.Label("Birthdate: ")
+            @Html.Label("Phone number: ")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Birthdate)
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.Label("Email: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
         </dd>
 
         @*<dt>

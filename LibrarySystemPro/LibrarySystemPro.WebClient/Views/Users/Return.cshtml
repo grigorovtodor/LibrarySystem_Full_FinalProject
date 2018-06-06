@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LibrarySystemPro.WebClient.Models.RentedBook>
+
+
+@{
+    ViewBag.Title = "Return";
+}
+
+<h2>Return</h2>
+
+<h3>Select the books you want to return.</h3>
+<div>
+    <h4>RentedBook</h4>
+    <hr />
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Book Name: ")
+            </th>
+            <th>
+                @Html.Label("Username: ")
+            </th>
+            <th>
+                @Html.Label("Date rented: ")
+            </th>
+            <th>
+                @Html.Label("Date to return: ")
+            </th>
+            <th>
+                @Html.Label("Books to return: ")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateRented)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateToReturn)
+                </td>
+                <td><input type="checkbox" name="ids" value="@item.Id" /></td>
+                @*<td>
+                    @Html.CheckBoxFor(modelItem => item.IsDeleted)
+                    @Html.EditorFor(modelItem => item.IsDeleted)
+                    @Html.ValidationMessageFor(modelItem => item.IsDeleted, "", new { @class = "text-danger" })
+                </td>*@
+            </tr>
+        }
+    </table>
+   
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Return books" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using LibrarySystemPro.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,5 +24,7 @@ namespace LibrarySystemPro.WebClient.Models
         public bool IsDeleted { get; set; }
 
         public virtual ICollection<RentedBook> RentedBooks { get; set; }
+
+        
     }
 }

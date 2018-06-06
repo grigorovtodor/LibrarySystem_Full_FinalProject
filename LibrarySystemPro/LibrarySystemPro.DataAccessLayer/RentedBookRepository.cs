@@ -129,5 +129,26 @@ namespace LibrarySystemPro.DataAccessLayer
                 return result;
             }
         }
+
+        //public void RentBook(RentedBookBusiness rentBook)
+        //{
+        //    //var _userRepo = new UserRepository();
+        //    //var _rentedBookRepository = new RentedBookRepository();
+        //    //var _bookRepo = new BookRepository();
+
+        //    //var user = Mapper.Map<UserBusiness>(_userRepo.Read(userId));
+        //    //var book = Mapper.Map<BookBusiness>(_bookRepo.Read(bookId));
+
+        //    //var rentedBook = new RentedBookBusiness();
+        //    ////rentedBook.User = user;
+        //    //rentedBook.UserId = userId;
+        //    //rentedBook.DateRented = DateTime.Now;
+        //    //rentedBook.DateToReturn = rentedBook.DateRented.Value.AddMonths(1);
+        //    //rentedBook.BookId = bookId;
+        //    ////rentedBook.Book = book;
+        //    var result = Mapper.Map<RentedBook>(rentBook);
+
+        //   Create(rentBook);
+        //}
     }
 }

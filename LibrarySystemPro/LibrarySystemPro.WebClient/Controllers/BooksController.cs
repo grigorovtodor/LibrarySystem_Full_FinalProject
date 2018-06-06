@@ -21,7 +21,6 @@ namespace LibrarySystemPro.WebClient.Controllers
         private UserRepository _userRepo = new UserRepository();
         private RentedBookRepository _rentedBookRepo = new RentedBookRepository();
 
-       
 
         // GET: Books
         public ActionResult Index()
@@ -33,6 +32,7 @@ namespace LibrarySystemPro.WebClient.Controllers
             foreach (var book in books)
             {
                 var current = Mapper.Map<Book>(book);
+                current.IsRented = _bookRepo.IsBookRented(current.Id);
 
                 if (_bookRepo.IsBookRented(book.Id))
                 {
